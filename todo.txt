@@ -1,0 +1,40 @@
+Cosas sacadas de la evaluación:
+
+- prohibido tener bucles infinitos en .sh como sleep infinity o tail -f
+- prohibido ejecutar bash en cualquier archivo
+- prohibido tener --link en archivos o cualquier referente a host y links en docker-compose
+
+- hacer el readme y la documentación que pide el subject
+
+- nginx necesita los certificados SSL y no sé si deberían existir como textos o si deberían estar guardados o que
+- cuando abras, no se debería ver la página de instalación del wp, debería estar ya configurado
+- se debería acceder con el link de penpalac.42.fr, aunque funcione bien por localhost
+- ^ este link debería ser un httpS no se debería poder entrar sin la S
+
+- los dockerfiles deberían ser originales pero no sé como se va a comprobar esoxd
+- las imagenes se deberían llamar como sus servicios, obligado
+- el makefile debería usar docker compose, sin el guión
+
+- corre el comando 'docker network ls' para comprobar que la network del docker-compose funciona
+- explica esta network
+
+- usa 'docker compose ps' para ver que nginx se ha creado y está corriendo
+- intenta acceder via puerto 80 y verifica que no se puede
+- abre penpalac.42.fr, debería ser una página de wordpress ya configurada
+- utiliza TLS v1.2 para el certificado. Puede aparecer un aviso de certificado self-signed
+
+- no hay nginx en el dockerfile de wp
+- 'docker compose ps' enseña que existe y corre
+- mira que hay un volumen con 'docker volume ls' y 'docker volume inspect <name>'. debería tener un path de '/home/penpalac/data'
+- mira si puedes dejar un comentario con un usuario de wordpress
+- login con el usuario admin. desde el admin, edita una página, y luego comprueba en la web si ha funcinado
+
+- no hay nginx en el dockerfile de mariadb
+- usa 'docker compose ps' para ver que existe y corre
+- mira que hay un volumen con 'docker volume ls'
+- logeate en la db y mira que no esté vacía
+
+- reboot la vm. relanza docker y comprueba que todo sigue funcionando
+- todo debería seguir con la configuración de antes y los cambios de la página deberían estar presentes
+
+- el evaluador elige un servicio y un nuevo puerto para este, tienes que cambiar el puerto y relanzar docker para ver que sigue funcionando con otro puerto
