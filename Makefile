@@ -1,28 +1,32 @@
 NAME = inception
 COMPOSEFILE = srcs/docker-compose.yml
 
-######
+#####################
 
-all: build
+all: build up
 
-build:
-	docker compose -f $(DOCKERFILE) build
+build: create_volumes
+	docker compose -f $(COMPOSEFILE) build
 
 up:
-	docker compose -f $(DOCKERFILE) up -d
+	docker compose -f $(COMPOSEFILE) up -d
+
+create_volumes:
+	mkdir -p srcs/volumes/mariadb_data srcs/volumes/wordpress_data
 
 down:
-	docker compose -f $(DOCKERFILE) down
+	docker compose -f $(COMPOSEFILE) down
 	
 clean: 
-	docker compose -f $(DOCKERFILE) down -v
+	docker compose -f $(COMPOSEFILE) down -v
 
+# requires sudo
 fclean: clean
+	rm -rf srcs/volumes/mariadb_data srcs/volumes/wordpress_data
 	docker system prune -af --volumes
 
 re : fclean all
 
 .PHONY: all build up down clean fclean re
 
-
-### may add stuff like see the db with a command or some
+### add a small echo that shows users and password ready to use
